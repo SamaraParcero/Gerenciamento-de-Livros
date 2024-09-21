@@ -17,7 +17,12 @@ public class Biblioteca {
 
    
     public void adicionarUsuario(Usuario usuario) {
-        usuarios.put(usuario.getEmail(), usuario); 
+        if (usuarios.containsKey(usuario.getEmail())) {
+            System.out.println("Erro: Este e-mail já está cadastrado.");
+        } else {
+            usuarios.put(usuario.getEmail(), usuario);
+            System.out.println("Usuário adicionado com sucesso!");
+        }
     }
 
    
@@ -91,6 +96,10 @@ public class Biblioteca {
    
     public int contarUsuarios() {
         return usuarios.size();
+    }
+    
+    public int contarLivros() {
+        return livros.size();
     }
 }
 
