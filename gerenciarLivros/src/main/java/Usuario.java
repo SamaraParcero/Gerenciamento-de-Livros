@@ -1,38 +1,47 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
+    private int id;
+    private String nome;
+    private String email;
+    private List<Integer> livrosAlugados; 
 
-    private String username;
-    private String password;
+    public Usuario(int id, String nome, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.livrosAlugados = new ArrayList<>();  
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     
-    public Usuario() {
-	}
-
-    public Usuario(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public void alugarLivro(int livroId) {
+        livrosAlugados.add(livroId);
     }
 
-    public String getUsername() {
-        return username;
+   
+    public void devolverLivro(int livroId) {
+        livrosAlugados.remove(Integer.valueOf(livroId)); 
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+  
+    public boolean possuiLivro(int livroId) {
+        return livrosAlugados.contains(livroId);
     }
 
-    public String getPassword() {
-        return password;
+    public List<Integer> getLivrosAlugados() {
+        return livrosAlugados;
     }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [username=").append(username).append(", password= ********").append("]");
-		return builder.toString();
-	}
-    
-    
 }
